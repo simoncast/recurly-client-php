@@ -1,5 +1,10 @@
 # Recurly PHP Client Library CHANGELOG
 
+## No Date
+
+* Added support for field balance_in_cents_invoiced
+* Added support for field balance_in_cents_uninvoiced
+
 ## Version 2.2.1 (July 19th, 2013)
 
 * Fixed invalid XML errors when saving subscriptions with add-ons.

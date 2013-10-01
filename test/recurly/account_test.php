@@ -9,12 +9,18 @@ class Recurly_AccountTest extends UnitTestCase
 
   public function testGetAccount()
   {
+
     $account = Recurly_Account::get('abcdef1234567890', $this->client);
 
     $this->assertIsA($account, 'Recurly_Account');
     $this->assertEqual($account->account_code, 'abcdef1234567890');
     $this->assertEqual($account->email, 'larry.david@example.com');
     $this->assertEqual($account->first_name, 'Larry');
+    $this->assertEqual($account->vat_number, 'ST-1937');
+    $this->assertIsA($account->balance_in_cents_invoiced, 'Recurly_CurrencyList');
+    $this->assertEqual($account->balance_in_cents_invoiced['EUR']->amount_in_cents, 800);
+    $this->assertIsA($account->balance_in_cents_uninvoiced, 'Recurly_CurrencyList');
+    $this->assertEqual($account->balance_in_cents_uninvoiced['EUR']->amount_in_cents, 700);
     $this->assertEqual($account->vat_number, 'ST-1937');
     $this->assertIsA($account->address, 'Recurly_Address');
     $this->assertEqual($account->address->address1, '123 Main St.');

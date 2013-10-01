@@ -150,6 +150,8 @@ abstract class Recurly_Base
     'address' => 'Recurly_Address',
     'add_on' => 'Recurly_AddOn',
     'add_ons' => 'Recurly_AddOnList',
+    'balance_in_cents_invoiced' => 'Recurly_CurrencyList',
+    'balance_in_cents_uninvoiced' => 'Recurly_CurrencyList',
     'billing_info' => 'Recurly_BillingInfo',
     'adjustment' => 'Recurly_Adjustment',
     'adjustments' => 'Recurly_AdjustmentList',
@@ -182,6 +184,7 @@ abstract class Recurly_Base
   );
 
   protected static function __parseXmlToNewObject($xml, $client=null) {
+
     $dom = new DOMDocument();
     if (!$dom->loadXML($xml, LIBXML_NOBLANKS)) return null;
 
