@@ -75,7 +75,8 @@ abstract class Recurly_Resource extends Recurly_Base
     $this->populateXmlDoc($doc, $root, $this);
     // To be able to consistently run tests across different XML libraries,
     // favor `<foo></foo>` over `<foo/>`.
-    return $doc->saveXML(null, LIBXML_NOEMPTYTAG);
+    //return $doc->saveXML(null, LIBXML_NOEMPTYTAG); [simon doesn't work with hhvm]
+    return $doc->saveXML();
   }
 
   protected function populateXmlDoc(&$doc, &$node, &$obj, $nested = false)
